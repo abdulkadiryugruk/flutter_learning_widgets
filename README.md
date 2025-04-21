@@ -39,6 +39,15 @@ Widget ağacını görsel olarak gösteren araç.
 
 ![Widget Ağacı](assets/screenshots/flutter_07.png)
 
+## 🎥 Demo Videosu
+
+Projenin nasıl çalıştığını ve widget'ların nasıl kullanıldığını görmek için aşağıdaki demo videosunu izleyebilirsiniz:
+
+![Demo Videosu](demo.mp4)
+
+Eğer video görüntülenmiyorsa, [buraya tıklayarak indirip izleyebilirsiniz.](demo.mp4)
+
+
 ## 🚀 Kullanım
 
 Proje, Flutter SDK ve gerekli bağımlılıkları kurduktan sonra kolayca çalıştırılabilir.
