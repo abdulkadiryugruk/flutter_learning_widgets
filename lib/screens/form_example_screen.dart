@@ -11,6 +11,11 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
   String _email = '';
+  String _password = '';
+  String _phone = '';
+  String _address = '';
+  String _birthYear = '';
+  String _cinsiyet = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +52,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                         value == null || value.length < 6
                             ? 'En az 6 karakter olmalı'
                             : null,
+                onSaved: (value) => _password = value!,
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -62,6 +68,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                   }
                   return null;
                 },
+                onSaved: (value) => _phone = value!,
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Adres'),
@@ -69,6 +76,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                 validator:
                     (value) =>
                         value == null || value.isEmpty ? 'Zorunlu alan' : null,
+                onSaved: (value) => _address = value!,
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Doğum yili'),
@@ -82,6 +90,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                   }
                   return null;
                 },
+                onSaved: (value) => _birthYear = value!,
               ),
 
               Row(
@@ -100,6 +109,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                       ),
                       validator:
                           (value) => value == null ? 'Zorunlu alan' : null,
+                      onSaved: (value) => _cinsiyet = value!,
                     ),
                   ),
                 ],
@@ -119,9 +129,14 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Ad: $_name\nE-posta: $_email')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Ad: $_name\nE-posta: $_email \nŞifre: $_password\n'
+            'Telefon: $_phone\nAdres: $_address\nDoğum Yılı: $_birthYear\n',
+          ),
+        ),
+      );
     }
   }
 }
