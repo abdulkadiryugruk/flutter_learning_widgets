@@ -6,7 +6,6 @@ import 'screens/stateful_example_screen.dart';
 import 'screens/form_example_screen.dart';
 import 'screens/navigation_example_screen.dart';
 import 'screens/list_example_screen.dart';
-import 'screens/children_widget_screen.dart';
 
 void main() {
   runApp(const MyApp());

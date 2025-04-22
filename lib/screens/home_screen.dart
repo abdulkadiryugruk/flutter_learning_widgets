@@ -5,7 +5,6 @@ import 'stateful_example_screen.dart';
 import 'form_example_screen.dart';
 import 'navigation_example_screen.dart';
 import 'list_example_screen.dart';
-import 'children_widget_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -104,18 +103,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  _buildCategoryCard(
-                    context,
-                    'children cesitleri',
-                    Icons.list,
-                    Colors.red,
-                    () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ThemeSwitcherScreen(),
-                      ),
-                    ),
-                  ),
+
                   
                 ],
               ),
