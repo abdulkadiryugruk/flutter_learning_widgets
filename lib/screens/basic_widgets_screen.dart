@@ -9,8 +9,9 @@ class BasicWidgetsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Temel Widgetlar'),
       ),
-      body: SingleChildScrollView(
+      body: Container(
         padding: const EdgeInsets.all(16.0),
+        color: Colors.teal[300], // Arka plan rengi
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

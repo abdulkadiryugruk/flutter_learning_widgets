@@ -15,7 +15,7 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Form Örneği')),
+      appBar: AppBar(title: const Text('Form ')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -24,17 +24,85 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
             children: [
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Ad Soyad'),
-                validator: (value) =>
-                    value == null || value.isEmpty ? 'Zorunlu alan' : null,
+                validator:
+                    (value) =>
+                        value == null || value.isEmpty ? 'Zorunlu alan' : null,
                 onSaved: (value) => _name = value!,
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'E-posta'),
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) => value != null && value.contains('@')
-                    ? null
-                    : 'Geçersiz e-posta',
+                validator:
+                    (value) =>
+                        value != null && value.contains('@')
+                            ? null
+                            : 'Geçersiz e-posta',
                 onSaved: (value) => _email = value!,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Şifre'),
+                obscureText: true,
+                validator:
+                    (value) =>
+                        value == null || value.length < 6
+                            ? 'En az 6 karakter olmalı'
+                            : null,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Telefon Numarası',
+                ),
+                keyboardType: TextInputType.phone,
+                maxLength: 10,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Zorunlu alan';
+                  } else if (value.length != 10) {
+                    return '10 haneli numara girin';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Adres'),
+                maxLines: 3,
+                validator:
+                    (value) =>
+                        value == null || value.isEmpty ? 'Zorunlu alan' : null,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Doğum yili'),
+                keyboardType: TextInputType.datetime,
+                maxLength: 4,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'zorunlu alan';
+                  } else if (value.length != 4) {
+                    return '4 haneli yıl girin';
+                  }
+                  return null;
+                },
+              ),
+
+              Row(
+                children: [
+                  const Text('Cinsiyet: '),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      items: const [
+                        DropdownMenuItem(value: 'Erkek', child: Text('Erkek')),
+                        DropdownMenuItem(value: 'Kadın', child: Text('Kadın')),
+                      ],
+                      onChanged: (value) {},
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                      validator:
+                          (value) => value == null ? 'Zorunlu alan' : null,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -51,9 +119,9 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Ad: $_name\nE-posta: $_email')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Ad: $_name\nE-posta: $_email')));
     }
   }
 }

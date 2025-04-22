@@ -12,13 +12,13 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
   int _counter = 0;
 
   // Renk değiştirme örneği için değişken
-  Color _boxColor = Colors.blue;
+  Color _boxColor = Colors.red;
 
   // Toggle örneği için değişken
   bool _isToggled = false;
 
   // Slider örneği için değişken
-  double _sliderValue = 0.5;
+  double _sliderValue = 0.37;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,11 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
                     Text(
                       'Mevcut Sayı: $_counter',
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -55,7 +55,7 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
                           },
                           child: const Text('Azalt'),
                         ),
-                        const SizedBox(width: 16),
+                        const SizedBox(width: 25),
                         ElevatedButton(
                           onPressed: () {
                             setState(() {
