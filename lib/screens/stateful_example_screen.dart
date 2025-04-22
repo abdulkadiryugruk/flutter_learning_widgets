@@ -20,161 +20,179 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
   // Slider örneği için değişken
   double _sliderValue = 0.37;
 
+  bool _isDarkMode = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Stateful Widget Örnekleri')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildSectionTitle('Sayaç Örneği (StatefulWidget)'),
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Mevcut Sayı: $_counter',
-                      style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              _counter--;
-                            });
-                          },
-                          child: const Text('Azalt'),
+    final theme = _isDarkMode ? ThemeData.dark() : ThemeData.light();
+
+    return Theme(
+      data: theme,
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Stateful Widget Örnekleri')),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildSectionTitle('Sayaç Örneği (StatefulWidget)'),
+              Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mevcut Sayı: $_counter',
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(width: 25),
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              _counter++;
-                            });
-                          },
-                          child: const Text('Artır'),
+                      ),
+                      const SizedBox(height: 25),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _counter--;
+                              });
+                            },
+                            child: const Text('Azalt'),
+                          ),
+                          const SizedBox(width: 25),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _counter++;
+                              });
+                            },
+                            child: const Text('Artır'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              _buildSectionTitle('Renk Değiştirme Örneği'),
+              Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 100,
+                        color: _boxColor,
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildColorButton(Colors.red),
+                          _buildColorButton(Colors.green),
+                          _buildColorButton(Colors.blue),
+                          _buildColorButton(Colors.yellow),
+                          _buildColorButton(Colors.purple),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              _buildSectionTitle('Toggle Switch Örneği'),
+              Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            _isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            _isDarkMode ? 'Koyu Tema' : 'Açık Tema',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: _isDarkMode ? Colors.amber : Colors.blue,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Switch(
+                        value: _isDarkMode,
+                        onChanged: (value) {
+                          setState(() {
+                            _isDarkMode = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              _buildSectionTitle('Slider Örneği'),
+              Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Değer: ${(_sliderValue * 100).toStringAsFixed(0)}%',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            _buildSectionTitle('Renk Değiştirme Örneği'),
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 100,
-                      color: _boxColor,
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildColorButton(Colors.red),
-                        _buildColorButton(Colors.green),
-                        _buildColorButton(Colors.blue),
-                        _buildColorButton(Colors.yellow),
-                        _buildColorButton(Colors.purple),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            _buildSectionTitle('Toggle Switch Örneği'),
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      _isToggled ? 'AÇIK' : 'KAPALI',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: _isToggled ? Colors.green : Colors.red,
                       ),
-                    ),
-                    Switch(
-                      value: _isToggled,
-                      onChanged: (value) {
-                        setState(() {
-                          _isToggled = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            _buildSectionTitle('Slider Örneği'),
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Değer: ${(_sliderValue * 100).toStringAsFixed(0)}%',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                      Slider(
+                        value: _sliderValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _sliderValue = value;
+                          });
+                        },
                       ),
-                    ),
-                    Slider(
-                      value: _sliderValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _sliderValue = value;
-                        });
-                      },
-                    ),
-                    LinearProgressIndicator(value: _sliderValue, minHeight: 10),
-                  ],
+                      LinearProgressIndicator(
+                        value: _sliderValue,
+                        minHeight: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            const SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-            // Widget ağacını göster butonu
-            Center(
-              child: ElevatedButton.icon(
-                onPressed: () => _showWidgetTree(context),
-                icon: const Icon(Icons.account_tree),
-                label: const Text('Widget Ağacını Göster'),
+              // Widget ağacını göster butonu
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () => _showWidgetTree(context),
+                  icon: const Icon(Icons.account_tree),
+                  label: const Text('Widget Ağacını Göster'),
+                ),
               ),
-            ),
 
-            const SizedBox(height: 30),
-          ],
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
