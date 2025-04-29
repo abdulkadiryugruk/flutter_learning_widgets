@@ -5,6 +5,7 @@ import 'stateful_example_screen.dart';
 import 'form_example_screen.dart';
 import 'navigation_example_screen.dart';
 import 'list_example_screen.dart';
+import 'test_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -103,8 +104,18 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  
+                  _buildCategoryCard(
+                    context,
+                    'Test Ekranı',
+                    Icons.check_circle,
+                    Colors.amber,
+                    () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TestScreen(),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

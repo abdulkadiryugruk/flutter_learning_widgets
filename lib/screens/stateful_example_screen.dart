@@ -15,7 +15,7 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
   Color _boxColor = Colors.red;
 
   // Toggle örneği için değişken
-  bool _isToggled = false;
+  final bool _isToggled = false;
 
   // Slider örneği için değişken
   double _sliderValue = 0.37;
@@ -37,7 +37,7 @@ class _StatefulExampleScreenState extends State<StatefulExampleScreen> {
             children: [
               _buildSectionTitle('Sayaç Örneği (StatefulWidget)'),
               Card(
-                elevation: 4,
+                elevation: 10,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(

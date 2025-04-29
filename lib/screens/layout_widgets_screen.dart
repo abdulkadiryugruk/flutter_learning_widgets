@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LayoutWidgetsScreen extends StatelessWidget {
-  const LayoutWidgetsScreen({Key? key}) : super(key: key);
+  const LayoutWidgetsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Layout Widgetları'),
-      ),
+      appBar: AppBar(title: const Text('Layout Widgetları')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,9 +39,9 @@ class LayoutWidgetsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Column örneği
             _buildSectionTitle('Column Widget (Dikey Düzen)'),
             Container(
@@ -60,9 +58,9 @@ class LayoutWidgetsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Stack örneği
             _buildSectionTitle('Stack Widget (Üst Üste Düzen)'),
             Container(
@@ -74,27 +72,33 @@ class LayoutWidgetsScreen extends StatelessWidget {
                   Positioned(
                     left: 20,
                     top: 20,
-                    child: _buildColorBox(Colors.red.withOpacity(0.7), 
-                        size: 80),
+                    child: _buildColorBox(
+                      Colors.red.withOpacity(0.7),
+                      size: 80,
+                    ),
                   ),
                   Positioned(
                     left: 60,
                     top: 50,
-                    child: _buildColorBox(Colors.green.withOpacity(0.7), 
-                        size: 80),
+                    child: _buildColorBox(
+                      Colors.green.withOpacity(0.7),
+                      size: 80,
+                    ),
                   ),
                   Positioned(
                     left: 100,
                     top: 80,
-                    child: _buildColorBox(Colors.blue.withOpacity(0.7), 
-                        size: 80),
+                    child: _buildColorBox(
+                      Colors.blue.withOpacity(0.7),
+                      size: 80,
+                    ),
                   ),
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Expanded örneği
             _buildSectionTitle('Expanded Widget (Genişleyebilen Düzen)'),
             Container(
@@ -102,24 +106,15 @@ class LayoutWidgetsScreen extends StatelessWidget {
               color: Colors.grey[200],
               child: Row(
                 children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(color: Colors.red),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(color: Colors.green),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(color: Colors.blue),
-                  ),
+                  Expanded(flex: 1, child: Container(color: Colors.red)),
+                  Expanded(flex: 2, child: Container(color: Colors.green)),
+                  Expanded(flex: 1, child: Container(color: Colors.blue)),
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Wrap örneği
             _buildSectionTitle('Wrap Widget (Sarmal Düzen)'),
             Container(
@@ -138,9 +133,9 @@ class LayoutWidgetsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Align örneği
             _buildSectionTitle('Align Widget (Hizalama)'),
             Container(
@@ -169,9 +164,9 @@ class LayoutWidgetsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 30),
-            
+
             // Widget ağacını göster butonu
             Center(
               child: ElevatedButton.icon(
@@ -180,7 +175,7 @@ class LayoutWidgetsScreen extends StatelessWidget {
                 label: const Text('Widget Ağacını Göster'),
               ),
             ),
-            
+
             const SizedBox(height: 30),
           ],
         ),
@@ -206,10 +201,7 @@ class LayoutWidgetsScreen extends StatelessWidget {
         color: Colors.blue,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Text(
-        label,
-        style: const TextStyle(color: Colors.white),
-      ),
+      child: Text(label, style: const TextStyle(color: Colors.white)),
     );
   }
 
@@ -219,10 +211,7 @@ class LayoutWidgetsScreen extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const Divider(),
         const SizedBox(height: 10),
@@ -233,60 +222,64 @@ class LayoutWidgetsScreen extends StatelessWidget {
   void _showWidgetTree(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Layout Widgets Ağacı'),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text('Scaffold', style: TextStyle(fontWeight: FontWeight.bold)),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text('├── AppBar'),
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Layout Widgets Ağacı'),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text(
+                    'Scaffold',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text('├── AppBar'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text('└── Body: SingleChildScrollView'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text('└── Column'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('├── Row Örnekleri'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('├── Column Örnekleri'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('├── Stack Örnekleri'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('├── Expanded Örnekleri'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('├── Wrap Örnekleri'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text('└── Align Örnekleri'),
+                  ),
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text('└── Body: SingleChildScrollView'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text('└── Column'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('├── Row Örnekleri'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('├── Column Örnekleri'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('├── Stack Örnekleri'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('├── Expanded Örnekleri'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('├── Wrap Örnekleri'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: Text('└── Align Örnekleri'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Kapat'),
               ),
             ],
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Kapat'),
-          ),
-        ],
-      ),
     );
   }
 }

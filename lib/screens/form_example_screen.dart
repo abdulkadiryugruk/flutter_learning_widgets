@@ -100,8 +100,8 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
                   Expanded(
                     child: DropdownButtonFormField<String>(
                       items: const [
-                        DropdownMenuItem(value: 'Erkek', child: Text('Erkek')),
-                        DropdownMenuItem(value: 'Kadın', child: Text('Kadın')),
+                        DropdownMenuItem(value: 'Cinsiyet Erkek', child: Text('Erkek')),
+                        DropdownMenuItem(value: 'Cinsiyet Kadın', child: Text('Kadın')),
                       ],
                       onChanged: (value) {},
                       decoration: const InputDecoration(
